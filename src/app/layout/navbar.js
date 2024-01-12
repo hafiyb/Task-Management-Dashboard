@@ -13,7 +13,7 @@ const Navbar = ({ children }) => {
 
   useEffect(() => {
     setWidth(window.innerWidth);
-  }, [window.innerWidth]);
+  }, []);
 
   const handleChangePage = (page) => {
     dispatch(setCurrentPage(page));

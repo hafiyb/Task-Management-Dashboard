@@ -49,7 +49,7 @@ export default function Home() {
 
   useEffect(() => {
     setWidth(window.innerWidth);
-  }, [window.innerWidth]);
+  }, []);
 
   // functions ==============================================================================================================
 
