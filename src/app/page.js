@@ -26,15 +26,20 @@ export default function Home() {
 
   // api calls ==============================================================================================================
 
-  const { data: pendingTasksData, isLoading: loadingPendingTasks } =
-    useGetTasksQuery();
+  const {
+    data: pendingTasksData,
+    isFetching: fetchingPendingTasks,
+    isLoading: loadingPendingTasks,
+  } = useGetTasksQuery();
 
   const { data: completedTasksData, isLoading: loadingCompletedTasks } =
     useGetCompletedTasksQuery();
 
-  const [triggerCompleteTask] = useCompleteTaskMutation();
+  const [triggerCompleteTask, { isLoading: completingTask }] =
+    useCompleteTaskMutation();
 
-  const [triggerDeleteTask] = useDeleteTaskMutation();
+  const [triggerDeleteTask, { isLoading: deletingTask }] =
+    useDeleteTaskMutation();
 
   // useEffects ==============================================================================================================
 
@@ -47,6 +52,7 @@ export default function Home() {
     }
   }, [pendingTasksData, completedTasksData]);
 
+  // this useEffect is used to set the width of the screen
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
@@ -65,19 +71,28 @@ export default function Home() {
 
   // component ==============================================================================================================
 
+  // this is the main component
+  // houses the task cards
+  // the task cards are displayed in two columns on desktop
+  // and one column on mobile
   return (
     <main className='flex min-w-full overflow-hidden'>
       <div className='flex-col w-[100vw] md:w-[calc(50vw-32px)] min-h-full p-4 md:p-8 overflow-hidden'>
         <TMText fontSize={'large'} className='underline mb-6'>
           {width < 640 ? currentPage : 'To do'}
         </TMText>
+        {/* This renders the To do column on web or the sole column on mobile */}
         <div className='h-[100%] overflow-auto pb-6'>
           {!loadingPendingTasks && currentPage === 'To do' ? (
             pendingTasks.map((task, index) => (
               <TMTaskCard
                 key={`${task.attributes.title}-${index}-todo`}
                 {...task.attributes}
-                active={task.id === activeCard}
+                active={
+                  task.id === activeCard &&
+                  !deletingTask &&
+                  !fetchingPendingTasks
+                }
                 onClick={() => setActiveCard(task.id)}
                 overdue={new Date(task.attributes.dueDate) < new Date()}
                 onComplete={() => {
@@ -86,9 +101,11 @@ export default function Home() {
                 onDelete={() => {
                   handleDelete(task.id);
                 }}
+                completing={completingTask}
               />
             ))
           ) : !loadingCompletedTasks && currentPage === 'Completed' ? (
+            // This renders the completed "page" on mobile
             completedTasks.map((task, index) => (
               <TMTaskCard
                 completed
@@ -105,10 +122,12 @@ export default function Home() {
               />
             ))
           ) : (
+            // loading state for To do column
             <div>Loading...</div>
           )}
         </div>
       </div>
+      {/* This renders the completed column on web */}
       {width > 640 && (
         <div className='flex-col w-[100vw] md:w-[calc(50vw-32px)] min-h-full p-4 md:p-8 overflow-hidden'>
           <TMText fontSize={'large'} className='underline mb-6'>
@@ -132,6 +151,7 @@ export default function Home() {
                 />
               ))
             ) : (
+              // loading state for completed column
               <div>Loading...</div>
             )}
           </div>

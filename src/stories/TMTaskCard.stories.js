@@ -27,5 +27,4 @@ _TMTaskCard.args = {
   title: 'This is a task',
   description: 'This is a description',
   dueDate: new Date(),
-  
 };

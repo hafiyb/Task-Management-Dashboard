@@ -11,6 +11,7 @@ const TMDialog = ({ open, setOpen, children, width, ...rest }) => {
       top-0 justify-center items-center min-h-full min-w-full bg-[rgb(0,0,0,0.25)]`}
     >
       <div className={`flex relative bg-offWhite shadow-md p-12 rounded-md`}>
+        {/* close dialog button */}
         <TMButton
           className={'absolute top-0 right-0 '}
           variant={'ghost'}
@@ -21,7 +22,6 @@ const TMDialog = ({ open, setOpen, children, width, ...rest }) => {
           X
         </TMButton>
         <div className={`${width ? 'w-[width]' : 'w-[80vw]'}`}>{children}</div>
-        {/* have to figure out how to adjust width here */}
       </div>
     </dialog>
   );

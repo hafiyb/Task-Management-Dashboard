@@ -20,10 +20,14 @@ const Navbar = ({ children }) => {
     setOpenDialog(false);
   };
 
+  // this is the navbar component
+  // houses the sidebar and the main content
+  // the sidebar is moved to the bottom on mobile
   return (
     <div className='min-w-full bg-grayBackground box-border overflow-hidden text-darkText'>
       <div className='flex bg-offWhite h-navbar w-full justify-between items-center px-10'>
         <TMText fontSize={'large'}>Task Manager</TMText>
+        {/* mobile navigation, only displayed when screen size small */}
         {width < 640 && (
           <TMButton
             variant='ghost'
@@ -35,6 +39,7 @@ const Navbar = ({ children }) => {
         )}
       </div>
       {children}
+      {/* mobile navigation dialog, shown when mobile navigation button is pressed */}
       <TMDialog open={openDialog} setOpen={setOpenDialog}>
         <div className='flex flex-col gap-6'>
           <TMButton

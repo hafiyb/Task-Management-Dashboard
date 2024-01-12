@@ -17,6 +17,7 @@ const TMTextField = ({ label, error, onChange, value, type}) => {
       onChange={(e) => onChange(e)}
       value={value}
       ></input>
+      {/* for displaying error message, currently not used in this project */}
       {error && (
         <TMText className='text-redMain' fontSize={'small'}>
           {error}
