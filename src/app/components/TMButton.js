@@ -14,17 +14,31 @@ const fontSizes = {
   small: 'text-sm',
   standard: 'text-base',
   large: 'text-lg',
+  xl: 'text-xl',
 };
 
-const TMButton = ({ children, className, size, variant, disabled, ...rest }) => {
+const TMButton = ({
+  children,
+  className,
+  size,
+  fontSize,
+  variant,
+  disabled,
+  onClick,
+  ...rest
+}) => {
   return (
     <button
       className={`box-border rounded-md text-darkText ${className} ${
-        size ? `${sizes[size]} ${fontSizes[size]}` : `${sizes['standard']} ${fontSizes['standard']}`
+        size
+          ? `${sizes[size]} ${fontSizes[size]}`
+          : `${sizes['standard']} ${fontSizes['standard']}`
       }
+      ${fontSize ? `${fontSizes[fontSize]}` : `${fontSizes['standard']}`}
       ${variant ? variants[variant] : variants['contained']}
-      ${disabled && 'bg-grayText hover:cursor-default'}
+      ${disabled && 'bg-grayText hover:bg-grayText hover:cursor-default'}
       `}
+      onClick={() => !disabled && onClick()}
       {...rest}
     >
       {children}

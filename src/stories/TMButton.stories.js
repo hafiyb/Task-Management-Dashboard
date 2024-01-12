@@ -20,7 +20,7 @@ const Template = (args) => <TMButton {...args} />;
 export const _TMButton = Template.bind({});
 
 _TMButton.args = {
-  label: 'I am a button',
+  children: 'I am a button',
   variant: 'contained',
   size: 'standard',
   disabled: false,

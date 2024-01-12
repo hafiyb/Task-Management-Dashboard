@@ -4,11 +4,13 @@ export default {
   title: 'Components',
   component: TMTaskCard,
   argTypes: {
-    fontSize: {
-      control: 'radio',
-      options: ['small', 'standard', 'large'],
-    },
     active: {
+      control: 'boolean',
+    },
+    completed: {
+      control: 'boolean',
+    },
+    overdue: {
       control: 'boolean',
     },
   },
@@ -24,5 +26,6 @@ export const _TMTaskCard = Template.bind({});
 _TMTaskCard.args = {
   title: 'This is a task',
   description: 'This is a description',
-  dueDate: new Date()
+  dueDate: new Date(),
+  
 };
