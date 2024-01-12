@@ -33,6 +33,7 @@ const TMTaskCard = ({
           <TMText fontSize={'large'} className='underline'>
             {title}
           </TMText>
+          {/* task delete button */}
           <TMButton
             className={'absolute top-2 right-2 '}
             variant={'ghost'}
@@ -47,6 +48,7 @@ const TMTaskCard = ({
         <TMText fontSize={'small'} className='text-grayText'>
           Due by {new Date(dueDate).toDateString()}
         </TMText>
+         {/* only show mark as complete button if task is not completed */}
         {active && (
           <TMButton onClick={() => onComplete()}>Mark as complete</TMButton>
         )}

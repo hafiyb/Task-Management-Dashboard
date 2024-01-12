@@ -65,6 +65,10 @@ export default function Home() {
 
   // component ==============================================================================================================
 
+  // this is the main component
+  // houses the task cards
+  // the task cards are displayed in two columns on desktop
+  // and one column on mobile
   return (
     <main className='flex min-w-full overflow-hidden'>
       <div className='flex-col w-[100vw] md:w-[calc(50vw-32px)] min-h-full p-4 md:p-8 overflow-hidden'>
