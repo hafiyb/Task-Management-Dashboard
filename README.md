@@ -82,10 +82,11 @@ This project utilizes the following packages:
 - Storybook
 - Tailwind
 
-Planned development:
+Planned development || TODO:
 - add more loading state
 - task card drag-and-drop functionality
 - add dark theme
+- refactor page.js
 
 
 
