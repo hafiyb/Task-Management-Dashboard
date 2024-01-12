@@ -34,7 +34,7 @@ const Sidebar = ({ children }) => {
   };
 
   // component ==============================================================================================================
-  
+
   // this is the sidebar component
   // houses the button to create a new task
   // the button is moved to the bottom on mobile
@@ -73,7 +73,8 @@ const Sidebar = ({ children }) => {
           />
           <TMButton
             onClick={() => handleCreate()}
-            disabled={!title || !description || !dueDate}
+            // disable create button if title or due date is empty
+            disabled={!title || !dueDate}
           >
             Create
           </TMButton>
