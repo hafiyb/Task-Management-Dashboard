@@ -60,7 +60,7 @@ bun start
 ```
 
 
-## Addtional Notes
+## Additional Notes
 
 This project also utilizes Storybook for reusable component documentation and sandbox
 
@@ -76,6 +76,12 @@ bun storybook
 ```
 
 The Storybook can then be accessed through [http://localhost:6006](http://localhost:6006) on your browser
+
+---
+---
+
+This project was drafted on Figma before being created on Next.js
+https://www.figma.com/file/wpGpRizYQaqA6ELMOXqxGk/Lemmyhomes-assignment?type=design&node-id=0-1&mode=design&t=XAdE9yTQbxEy7TMj-0
 
 ---
 ---
