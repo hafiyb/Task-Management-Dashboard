@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const tasksApi = createApi({
   reducerPath: 'tasksApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:1337/api',
+    baseUrl: process.env.NEXT_PUBLIC_API_URL,
     prepareHeaders: (headers) => {
       headers.set(
         'Authorization',
